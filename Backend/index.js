@@ -6,12 +6,14 @@ import routes from './Routes/UserRoutes.js';
 const app = express();
 
 
+//middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+
+//my routes
 //user routes
 routes(app);
-
-
-
-app.use(bodyParser.json());
 
 
 app.get('/', (req, res) => {
