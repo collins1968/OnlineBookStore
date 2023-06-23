@@ -48,7 +48,8 @@ export const register = async (req, res) => {
             .input('last_name', sql.VarChar, last_name)
             .input('createdAt', sql.DateTime, new Date()) // Add current date and time as 'createdAt' input
             .input('updatedAt', sql.DateTime, new Date())
-            .query('insert into Users (username, email, password, first_name, last_name, created_at, updated_at) values (@username, @email, @hashedPassword, @first_name, @last_name, @createdAt, @updatedAt)');
+            .input('isAdmin', sql.Bit, 0)
+            .query('insert into Users (username, email, password, first_name, last_name,  created_at, updated_at, isAdmin) values (@username, @email, @hashedPassword, @first_name, @last_name,  @createdAt, @updatedAt, @isAdmin)');
         result.output.errorMessage ? res.status(400).json({ message: result.output.errorMessage }) :
             res.status(200).json({ message: 'User created successfully' });
     } catch (error) {
@@ -75,7 +76,6 @@ export const login = async (req, res) => {
             res.status(200).json({ email: user.email, username: user.username, id: user.id, token: token });
         }
     }
-
 };
 
 
