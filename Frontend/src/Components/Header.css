@@ -47,10 +47,21 @@
     object-fit: cover;
     margin-right: 20px;
   }
+
+  .LogoName {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
   
   .website-name {
-    font-size: 20px;
-    margin: 0 20px;
+    font-size: 48px;
+    font-weight: bold;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+    text-align: center;
   }
 
 

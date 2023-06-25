@@ -27,9 +27,10 @@ const Header = () => {
 </div>
       </div>  
       <div className='navItems'>
-        <h2>
-        <AiOutlineShoppingCart />Cart
-        </h2>
+        <Link to="/cart" >
+        <h2><AiOutlineShoppingCart />Cart</h2>
+        </Link>
+        
         
         <img src={profile} alt="profileImage" className='profileImage' />
         

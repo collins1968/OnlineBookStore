@@ -28,7 +28,9 @@ const CartPage = () => {
           ))}
         </ul>
       )}
-      <button className="checkout-button">Checkout</button>
+      <button className="checkout-button">Checkout</button> 
+      {/* <Link to="/checkout"><button className="checkout-button">Checkout</button> </Link> */}
+      
     </div>
   );
 };
