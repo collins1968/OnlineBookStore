@@ -2,6 +2,8 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddBook = () => {
   const schema = yup.object().shape({
@@ -21,8 +23,11 @@ const AddBook = () => {
   });
 
   const onSubmit = (data) => {
-    axios.post('http://localhost:8081/books/', data).then(response => {
-      response.data.message && alert(response.data.message);
+    axios.post('http://localhost:8081/books/', data)
+    .then(response => {
+      // response.data.message && alert(response.data.message);
+      toast.success('Book Added Successfully')
+
     });
   };
   return (

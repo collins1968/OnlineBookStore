@@ -4,6 +4,8 @@ import { useForm} from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const RegisterForm = () => {
 
@@ -22,7 +24,7 @@ const RegisterForm = () => {
     const onSubmit = (data) => {
         axios.post('http://localhost:8081/register/', data)
         .then(response => {
-            response.data.message && alert(response.data.message)
+            response.data.message && toast.success(response.data.message)
             navigate("/"); //to navigate to the login page
         })
     };
