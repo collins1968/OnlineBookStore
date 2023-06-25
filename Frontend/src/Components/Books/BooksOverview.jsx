@@ -6,12 +6,10 @@ import Header from "../Header";
 
 const BooksOverview = () => {
     return (
-        <div className="Overview">
+        <div className="BooksOverview">
             <Header />
-            <Sidebar />
             <Overview />
-            <Footer />
-            
+            <Footer />   
         </div>
     )
 }

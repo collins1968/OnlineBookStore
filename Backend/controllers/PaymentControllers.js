@@ -12,10 +12,13 @@
 //   return 1400;
 // };
 
-import stripe from 'stripe';
+// import stripe from 'stripe';
 
-const stripeInstance = stripe('sk_test_51NM8u2LGQyKikAGGwFg0GZq0y1Wjc6w06B2RntwLuC28Tsy2QVuGNnP8gGOzx7MrW3z5ZAGArok6Y5bxSIQ76z5k00QE5QYyGV');
+// const stripeInstance = stripe('sk_test_51NM8u2LGQyKikAGGwFg0GZq0y1Wjc6w06B2RntwLuC28Tsy2QVuGNnP8gGOzx7MrW3z5ZAGArok6Y5bxSIQ76z5k00QE5QYyGV');
 
+import Stripe from 'stripe';
+
+const stripe = new Stripe('sk_test_51NM8u2LGQyKikAGGwFg0GZq0y1Wjc6w06B2RntwLuC28Tsy2QVuGNnP8gGOzx7MrW3z5ZAGArok6Y5bxSIQ76z5k00QE5QYyGV');
 
 export const PostPayment = async (req, res) => {
     const calculateOrderAmount = (items) => {

@@ -5,16 +5,18 @@ import config from '../db/config.js';
 // Get all books
 export const getBooks = async (req, res) => {
     let pool = await sql.connect(config.sql)
-    const result = await pool.request().query("select * from Books");
+    const result = await pool.request().query("SELECT b.book_id, b.title, b.pdf_url, b.image, a.author_name, c.category_name FROM Books b INNER JOIN Authors a ON b.author_id = a.author_id INNER JOIN Categories c ON b.category_id = c.category_id");
     !result.recordset[0] ? res.status(404).json({ message: 'Books not found' }) :
         res.status(200).json(result.recordset);
     sql.close(); // Close the SQL connection
 };
 
+//get book by id
 export const getBook = async (req, res) => {
     res.send('getBook')
 }
 
+//add a book
 export const AddBook = async (req, res) => {
     const { title, pdf_url, authorName, categoryName, price, image } = req.body;
     try {
@@ -66,7 +68,7 @@ export const AddBook = async (req, res) => {
             .input('authorId', sql.Int, authorId)
             .input('categoryId', sql.Int, categoryId)
             .input('price', sql.VarChar, price)
-            .input('image', sql.VarBinary, image)
+            .input('image', sql.VarChar, image)
             .query('insert into Books (title, pdf_url, author_id, category_id, price, image) values (@title, @pdf_url, @authorId, @categoryId, @price, @image)');
             result.output.errorMessage ? res.status(400).json({ message: result.output.errorMessage }) :
             res.status(200).json({ message: 'Book created successfully' });
@@ -95,7 +97,7 @@ export const getBooksByCategory = async (req, res) => {
   }
 }
   
-
+// get all categories
 export const getCategories = async (req, res) => {
     let pool = await sql.connect(config.sql)
     const result = await pool.request()
@@ -105,6 +107,7 @@ export const getCategories = async (req, res) => {
     sql.close();
 }
 
+// get all authors
 export const getAuthors = async (req, res) => {
     let pool = await sql.connect(config.sql)
     const result = await pool.request()

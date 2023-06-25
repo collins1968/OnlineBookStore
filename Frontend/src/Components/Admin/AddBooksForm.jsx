@@ -44,8 +44,8 @@ const AddBook = () => {
                     <input type="text" className="form-control"
                         id="price" placeholder="Enter price" {...register("price")} />
                     <p>{errors.price?.message}</p>
-                    <input type="file" className="form-control" accept='"image/*"'
-                        id="image" placeholder="Enter image" {...register("image")} />
+                    <input type="text" className="form-control" 
+                        id="image" placeholder="Enter image url" {...register("image")} />
                     <p>{errors.image?.message}</p>
                     <button type="submit" className="btn btn-primary">Submit</button>
         </div>

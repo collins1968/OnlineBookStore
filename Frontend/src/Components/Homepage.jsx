@@ -8,13 +8,9 @@ import { Link, Routes, BrowserRouter, Route } from 'react-router-dom';
     return (
         <>
         <div className="homepage">
-        {/* <RegisterForm /> */}
-        {/* <LoginForm /> */}
              <div className='image'>
                 <img src={lib} alt="libImage" />
-                
                 </div>    
-                
                  <LoginForm />
          <Routes>
             <Route path="/register" element={<RegisterForm />} />

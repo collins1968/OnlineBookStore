@@ -1,0 +1,10 @@
+.Overview {
+    display: flex;
+    flex-direction: row;
+    padding: 40px;
+    gap: 20px;
+    max-height: 400vh;
+    overflow: auto;
+
+
+}
