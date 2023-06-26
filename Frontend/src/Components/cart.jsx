@@ -10,6 +10,7 @@ const CartPage = () => {
     { id: 3, title: 'Book 3', price: 19.99 },
   ];
 
+
   return (
     <div className="cart-page">
       <h2>Your Shopping Cart</h2>

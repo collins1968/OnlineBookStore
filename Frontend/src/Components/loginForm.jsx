@@ -3,11 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { useForm} from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-// import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Context } from '../context/userContext/context';
+import { useContext } from 'react';
 
-const LoginForm = () => {
-    // const navigate = useNavigate();
+const LoginForm = ({onFormChange}) => {
+    const {dispatch} = useContext(Context);
+    const navigate = useNavigate();
     const schema = yup.object().shape({
         username: yup.string().required('Username is required'),
         password: yup.string().required('Password is required'),
@@ -18,12 +20,15 @@ const LoginForm = () => {
 
     const onSubmit = (data) =>{
         axios.post('http://localhost:8081/login/', data)
-        .then(response => {
-                response.data.message && alert(response.data.message);
-                // navigate('/home')
+        .then(({data}) => {
+            if(data.token){
+                dispatch({type: 'LOGIN_SUCCESS', payload: data});
+                navigate('/home');
+            }
         })
         .catch(({response}) => {
-            console.log(response);
+            dispatch({type: 'LOGIN_FAILURE'});
+            console.log(response?.data.error);
         });
     }
     
@@ -47,9 +52,9 @@ const LoginForm = () => {
     </div>
     <div class="btn">
     <button class="button1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-    <Link to={'/register'}> <button class="button2" type="submit">Sign Up</button></Link>
+     <button onClick={onFormChange} class="button2" type="submit">Sign Up</button>
     </div>
-    <button class="button3">Forgot Password</button>
+    {/* <button class="button3">Forgot Password</button> */}
     
 </form>
         </div>

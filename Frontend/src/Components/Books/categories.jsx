@@ -19,6 +19,7 @@ const Categories = () => {
 
     return (
         <>
+        <h2>Categories</h2>
     <ul class="sidebar-menu">
         {
             categories && categories.map((category, index) => {

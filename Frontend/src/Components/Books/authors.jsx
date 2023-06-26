@@ -18,6 +18,7 @@ const Authors = () => {
 
     return (
         <>
+        <h2>Authors</h2>
     <ul class="sidebar-menu">
         {
             Authors && Authors.map((Author, index) => {
